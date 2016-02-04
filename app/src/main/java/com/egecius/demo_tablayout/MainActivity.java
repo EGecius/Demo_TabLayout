@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 	private ViewPager viewPager;
 	private TabLayout tabLayout;
 
+	private String[] titles = {"Section 1", "Section 2", "Section 3"};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,10 +47,12 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 			@Override
-			public void onTabUnselected(TabLayout.Tab tab) {}
+			public void onTabUnselected(TabLayout.Tab tab) {
+			}
 
 			@Override
-			public void onTabReselected(TabLayout.Tab tab) {}
+			public void onTabReselected(TabLayout.Tab tab) {
+			}
 		});
 	}
 
@@ -58,12 +62,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void initTabs() {
-		// TODO: 04/02/2016 have a single source of trought for tabs & names
-
 		tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-		tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-		tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-		tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+		tabLayout.addTab(tabLayout.newTab().setText(titles[0]));
+		tabLayout.addTab(tabLayout.newTab().setText(titles[1]));
+		tabLayout.addTab(tabLayout.newTab().setText(titles[2]));
 		tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 	}
 
@@ -77,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
 		 */
 		private static final String ARG_SECTION_NUMBER = "section_number";
 
-		public PlaceholderFragment() {
-		}
+		public PlaceholderFragment() {}
 
 		/**
 		 * Returns a new instance of this fragment for the given section
@@ -120,19 +121,18 @@ public class MainActivity extends AppCompatActivity {
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			return titles.length;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
 			switch (position) {
 				case 0:
-					return "SECTION 1";
+					return titles[0];
 				case 1:
-					return "SECTION 2";
+					return titles[1];
 				case 2:
-					return "SECTION 3";
+					return titles[2];
 			}
 			return null;
 		}
